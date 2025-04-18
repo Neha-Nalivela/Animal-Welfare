@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animal Welfare</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>ANIMAL WELFARE</h1>
+      <input type="text" placeholder="Search here" class="search" />
+    </header>
+    <main>
+      <div class="menu-icon" onclick="toggleMenu()">☰</div>
+    </main>
+
+    <nav id="sidebar" class="hidden">
+      <ul>
+        <li onclick="loadPage('organizations')">NearBy Welfare Organizations</li>
+        <li onclick="loadPage('donation')">Donation</li>
+        <li onclick="loadPage('adoption')">Adoption</li>
+        <li onclick="loadPage('volunteers')">Volunteers</li>
+        <li onclick="loadPage('hospitals')">Nearby Hospitals</li>
+        <li onclick="loadPage('feedback')">Feedback</li>
+      </ul>
+    </nav>
+
+    <main id="main-content">
+      <p>Welcome to Animal Welfare. Select a section from the menu.</p>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
