@@ -3,6 +3,11 @@ function toggleMenu() {
     sidebar.classList.toggle("hidden");
   }
   
+  function toggleUserMenu() {
+    const dropdown = document.getElementById('user-dropdown');
+    dropdown.classList.toggle('hidden');
+  }  
+  
   function loadPage(page) {
     const main = document.getElementById("main-content");
     fetch(`/api/${page}`)

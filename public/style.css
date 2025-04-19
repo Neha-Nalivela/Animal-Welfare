@@ -57,5 +57,52 @@ body {
     display: block; /* This ensures the menu icon is displayed on a new line */
     margin-top: 10px; /* Adds some space above the menu icon */
   }
+   
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   
+  .user-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  .user-menu {
+    position: relative;
+  }
+    
+  .dropdown {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    z-index: 100;
+  }
+  
+  .dropdown button {
+    background: none;
+    border: none;
+    padding: 8px 12px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+  }
+  
+  .dropdown button:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .hidden {
+    display: none;
+  }
   
