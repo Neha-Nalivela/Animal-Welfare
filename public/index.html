@@ -16,11 +16,10 @@
           <div class="profile" onclick="toggleProfileMenu()">👤</div>
         </div>
       </header>
+
       <nav id="sidebar" class="hidden">
         <ul>
-          <li onclick="loadPage('organizations')">
-            NearBy Welfare Organizations
-          </li>
+          <li onclick="loadPage('organizations')">NearBy Welfare Organizations</li>
           <li onclick="loadPage('donation')">Donation</li>
           <li onclick="loadPage('adoption')">Adoption</li>
           <li onclick="loadPage('volunteers')">Volunteers</li>
@@ -29,10 +28,10 @@
         </ul>
       </nav>
 
+      <!-- 🔽 Updated: Profile menu is now dynamic -->
       <div id="profile-menu" class="hidden profile-menu">
-        <ul>
-          <li onclick="loadPage('login')">Login</li>
-          <li onclick="loadPage('register')">Register</li>
+        <ul id="profile-menu-items">
+          <!-- Will be filled dynamically by JS -->
         </ul>
       </div>
 

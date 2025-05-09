@@ -1,3 +1,5 @@
+let isLoggedIn = false; // Global login state
+
 // Toggle sidebar menu visibility
 function toggleMenu() {
   const sidebar = document.getElementById('sidebar');
@@ -6,15 +8,39 @@ function toggleMenu() {
 
 // Toggle profile menu visibility
 function toggleProfileMenu() {
+  updateProfileMenu(); // Ensure correct items show
   const profileMenu = document.getElementById('profile-menu');
   profileMenu.classList.toggle('hidden');
 }
 
-// Simulated page loading — this just updates the main content
-function loadPage(pageName) {
-  const mainContent = document.getElementById('main-content');
+// Update profile menu items based on login state
+function updateProfileMenu() {
+  const menu = document.getElementById('profile-menu-items');
+  menu.innerHTML = '';
 
-  switch (pageName.toLowerCase()) {
+  if (isLoggedIn) {
+    menu.innerHTML = `<li onclick="logout()">Logout</li>`;
+  } else {
+    menu.innerHTML = `
+      <li onclick="loadPage('login')">Login</li>
+      <li onclick="loadPage('register')">Register</li>
+    `;
+  }
+}
+
+// Simulated page loading
+function loadPage(pageName) {
+  const page = pageName.toLowerCase().trim();
+  const mainContent = document.getElementById('main-content');
+  const protectedPages = ['adoption', 'feedback', 'donation'];
+
+  if (protectedPages.includes(page) && !isLoggedIn) {
+    alert("Please log in to access this page.");
+    loadPage('login');
+    return;
+  }
+
+  switch (page) {
     case 'login':
       mainContent.innerHTML = `
         <h2>Login</h2>
@@ -112,9 +138,14 @@ function loadPage(pageName) {
   document.getElementById('sidebar').classList.add('hidden');
   document.getElementById('profile-menu').classList.add('hidden');
 }
+
+// Handlers
 function handleLogin(event) {
   event.preventDefault();
+  isLoggedIn = true;
   alert("Login successful!");
+  updateProfileMenu();
+  loadPage('home');
 }
 
 function handleRegister(event) {
@@ -132,3 +163,9 @@ function handleFeedback(event) {
   alert("Thank you for your feedback!");
 }
 
+function logout() {
+  isLoggedIn = false;
+  alert("Logged out successfully!");
+  updateProfileMenu();
+  loadPage('home');
+}
