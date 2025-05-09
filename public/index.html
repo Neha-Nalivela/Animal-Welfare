@@ -1,54 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animal Welfare</title>
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- Material Icons (optional, if you want to use a vector icon instead of image) -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
-  <div class="app">
-    <header>
-      <h1>ANIMAL WELFARE</h1>
-      <div class="header-right">
-        <input type="text" placeholder="Search here" class="search" />
-      
-        <!-- User Icon -->
-        <div class="user-menu" onclick="toggleUserMenu()">
-          <img src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" alt="User Icon" class="user-icon" />
-          
-          <!-- Dropdown -->
-          <div id="user-dropdown" class="dropdown hidden">
-            <button onclick="loadPage('login')">Login</button>
-            <button onclick="loadPage('register')">Register</button>
-          </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animal Welfare</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h1>ANIMAL WELFARE</h1>
+        <div class="top-bar">
+          <div class="menu-icon" onclick="toggleMenu()">☰</div>
+          <input type="text" placeholder="Search here" class="search" />
+          <div class="profile" onclick="toggleProfileMenu()">👤</div>
         </div>
+      </header>
+      <nav id="sidebar" class="hidden">
+        <ul>
+          <li onclick="loadPage('organizations')">
+            NearBy Welfare Organizations
+          </li>
+          <li onclick="loadPage('donation')">Donation</li>
+          <li onclick="loadPage('adoption')">Adoption</li>
+          <li onclick="loadPage('volunteers')">Volunteers</li>
+          <li onclick="loadPage('hospitals')">Nearby Hospitals</li>
+          <li onclick="loadPage('feedback')">Feedback</li>
+        </ul>
+      </nav>
+
+      <div id="profile-menu" class="hidden profile-menu">
+        <ul>
+          <li onclick="loadPage('login')">Login</li>
+          <li onclick="loadPage('register')">Register</li>
+        </ul>
       </div>
-    </header>
 
-    <main>
-      <div class="menu-icon" onclick="toggleMenu()">☰</div>
-    </main>
+      <main id="main-content">
+        <p>Welcome to Animal Welfare. Select a section from the menu.</p>
+      </main>
+    </div>
 
-    <nav id="sidebar" class="hidden">
-      <ul>
-        <li onclick="loadPage('organizations')">NearBy Welfare Organizations</li>
-        <li onclick="loadPage('donation')">Donation</li>
-        <li onclick="loadPage('adoption')">Adoption</li>
-        <li onclick="loadPage('volunteers')">Volunteers</li>
-        <li onclick="loadPage('hospitals')">Nearby Hospitals</li>
-        <li onclick="loadPage('feedback')">Feedback</li>
-      </ul>
-    </nav>
-
-    <main id="main-content">
-      <p>Welcome to Animal Welfare.<br> Select a section from the menu.</p>
-    </main>
-  </div>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
