@@ -1,19 +1,19 @@
-let isLoggedIn = false; // Global login state
+let isLoggedIn = false;
 
-// Toggle sidebar menu visibility
+// Sidebar menu toggle
 function toggleMenu() {
   const sidebar = document.getElementById('sidebar');
   sidebar.classList.toggle('hidden');
 }
 
-// Toggle profile menu visibility
+// Profile menu toggle
 function toggleProfileMenu() {
-  updateProfileMenu(); // Ensure correct items show
+  updateProfileMenu();
   const profileMenu = document.getElementById('profile-menu');
   profileMenu.classList.toggle('hidden');
 }
 
-// Update profile menu items based on login state
+// Dynamically fill profile menu
 function updateProfileMenu() {
   const menu = document.getElementById('profile-menu-items');
   menu.innerHTML = '';
@@ -28,7 +28,7 @@ function updateProfileMenu() {
   }
 }
 
-// Simulated page loading
+// Load different pages
 function loadPage(pageName) {
   const page = pageName.toLowerCase().trim();
   const mainContent = document.getElementById('main-content');
@@ -139,7 +139,7 @@ function loadPage(pageName) {
   document.getElementById('profile-menu').classList.add('hidden');
 }
 
-// Handlers
+// Form handlers
 function handleLogin(event) {
   event.preventDefault();
   isLoggedIn = true;
@@ -169,3 +169,17 @@ function logout() {
   updateProfileMenu();
   loadPage('home');
 }
+
+// Initialize profile menu on page load
+window.onload = function () {
+  updateProfileMenu();
+};
+
+// Optional: Hide profile menu when clicking outside
+document.addEventListener("click", function (e) {
+  const profileIcon = document.querySelector(".profile");
+  const menu = document.getElementById("profile-menu");
+  if (!profileIcon.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.add("hidden");
+  }
+});
