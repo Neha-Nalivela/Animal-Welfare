@@ -28,7 +28,7 @@ header {
 .menu-icon {
   font-size: 24px;
   cursor: pointer;
-  color: white;
+  color: black;
 }
 
 /* Center: Title & Search */
@@ -135,7 +135,11 @@ button:hover {
 }
 
 /* Custom class button */
-.class {
-  background-color: red;
+#class {
+  background-color:yellowgreen;
   color: white;
+}
+
+#co{
+  color:black;
 }

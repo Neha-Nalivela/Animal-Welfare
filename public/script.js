@@ -117,13 +117,13 @@ function loadPage(pageName) {
         <figure>
         <img src="cat.jpg" alt="Cat" width="200px">
         <p><caption>Cat</caption></p>
-        <p><button id="class">Adopt</button></p>
+        <p><button id="class" type="submit">Adopt</button></p>
         <img src="Pomeranian.webp" alt="Pomeranian.webp" width="200px">
         <p><caption>Pomeranian</caption></p>
-        <p><button id="class">Adopt</button></p>
+        <p><button id="class" type="submit">Adopt</button></p>
         <img src="puppies.jpg" alt="Dog" width="200px">
-        <caption>Dog</caption>
-        <p><button id="class">Adopt</button></p>
+        <p><caption>Dog</caption></p>
+        <p><button id="class" type="submit">Adopt</button></p>
         </figure>
         </p>
       `;
