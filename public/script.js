@@ -2,21 +2,21 @@ let isLoggedIn = false;
 
 // Sidebar menu toggle
 function toggleMenu() {
-  const sidebar = document.getElementById('sidebar');
-  sidebar.classList.toggle('hidden');
+  const sidebar = document.getElementById("sidebar");
+  sidebar.classList.toggle("hidden");
 }
 
 // Profile menu toggle
 function toggleProfileMenu() {
   updateProfileMenu();
-  const profileMenu = document.getElementById('profile-menu');
-  profileMenu.classList.toggle('hidden');
+  const profileMenu = document.getElementById("profile-menu");
+  profileMenu.classList.toggle("hidden");
 }
 
 // Dynamically fill profile menu
 function updateProfileMenu() {
-  const menu = document.getElementById('profile-menu-items');
-  menu.innerHTML = '';
+  const menu = document.getElementById("profile-menu-items");
+  menu.innerHTML = "";
 
   if (isLoggedIn) {
     menu.innerHTML = `<li onclick="logout()">Logout</li>`;
@@ -31,17 +31,17 @@ function updateProfileMenu() {
 // Load different pages
 function loadPage(pageName) {
   const page = pageName.toLowerCase().trim();
-  const mainContent = document.getElementById('main-content');
-  const protectedPages = ['adoption', 'feedback', 'donation'];
+  const mainContent = document.getElementById("main-content");
+  const protectedPages = ["adoption", "feedback", "donation"];
 
   if (protectedPages.includes(page) && !isLoggedIn) {
     alert("Please log in to access this page.");
-    loadPage('login');
+    loadPage("login");
     return;
   }
 
   switch (page) {
-    case 'login':
+    case "login":
       mainContent.innerHTML = `
         <h2>Login</h2>
         <form onsubmit="handleLogin(event)">
@@ -54,7 +54,7 @@ function loadPage(pageName) {
       `;
       break;
 
-    case 'register':
+    case "register":
       mainContent.innerHTML = `
         <h2>Register</h2>
         <form onsubmit="handleRegister(event)">
@@ -69,7 +69,7 @@ function loadPage(pageName) {
       `;
       break;
 
-    case 'donation':
+    case "donation":
       mainContent.innerHTML = `
         <h2>Make a Donation</h2>
         <form onsubmit="handleDonation(event)">
@@ -89,7 +89,7 @@ function loadPage(pageName) {
       `;
       break;
 
-    case 'feedback':
+    case "feedback":
       mainContent.innerHTML = `
         <h2>Feedback</h2>
         <form onsubmit="handleFeedback(event)">
@@ -102,28 +102,41 @@ function loadPage(pageName) {
       `;
       break;
 
-    case 'organizations':
+    case "organizations":
       mainContent.innerHTML = `
         <h2>Nearby Welfare Organizations</h2>
         <p>List of local animal welfare organizations coming soon...</p>
       `;
       break;
 
-    case 'adoption':
+    case "adoption":
       mainContent.innerHTML = `
         <h2>Adoption</h2>
         <p>Find loving pets that need a home.</p>
+        <p>
+        <figure>
+        <caption>Cat</caption>
+        <img src="cat.jpg" alt="Cat" width="200px">
+        <p><button id="class">Adopt</button></p>
+        <caption>Pomeranian</caption>
+        <img src="Pomeranian.webp" alt="Pomeranian.webp" width="200px">
+        <p><button id="class">Adopt</button></p>
+        <caption>Dog</caption>
+        <img src="puppies.jpg" alt="Dog" width="200px">
+        <p><button id="class">Adopt</button></p>
+        </figure>
+        </p>
       `;
       break;
 
-    case 'volunteers':
+    case "volunteers":
       mainContent.innerHTML = `
         <h2>Volunteers</h2>
         <p>Join our team and help make a difference.</p>
       `;
       break;
 
-    case 'hospitals':
+    case "hospitals":
       mainContent.innerHTML = `
         <h2>Nearby Hospitals</h2>
         <p>List of animal hospitals nearby.</p>
@@ -131,12 +144,12 @@ function loadPage(pageName) {
       break;
 
     default:
-      mainContent.innerHTML = '<p>Page not found.</p>';
+      mainContent.innerHTML = "<p>Page not found.</p>";
       break;
   }
 
-  document.getElementById('sidebar').classList.add('hidden');
-  document.getElementById('profile-menu').classList.add('hidden');
+  document.getElementById("sidebar").classList.add("hidden");
+  document.getElementById("profile-menu").classList.add("hidden");
 }
 
 // Form handlers
@@ -145,7 +158,7 @@ function handleLogin(event) {
   isLoggedIn = true;
   alert("Login successful!");
   updateProfileMenu();
-  loadPage('home');
+  loadPage("home");
 }
 
 function handleRegister(event) {
@@ -167,7 +180,7 @@ function logout() {
   isLoggedIn = false;
   alert("Logged out successfully!");
   updateProfileMenu();
-  loadPage('home');
+  loadPage("home");
 }
 
 // Initialize profile menu on page load
