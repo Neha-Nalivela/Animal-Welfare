@@ -49,10 +49,10 @@ header {
 }
 
 .search {
-  padding: 8px;
+  padding: 12px;
   font-size: 14px;
   width: 60%;
-  max-width: 500px;
+  max-width: 1000px;
   margin-top: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
