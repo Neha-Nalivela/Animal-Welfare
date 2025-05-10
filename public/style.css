@@ -133,11 +133,14 @@ button {
 button:hover {
   background-color: #483664;
 }
-
+#class{
+  background-color: greenyellow;
+  color: rgb(58, 15, 20);
+}
 /* Custom class button */
-#class {
+#class:hover {
   background-color:yellowgreen;
-  color: white;
+  
 }
 
 #co{

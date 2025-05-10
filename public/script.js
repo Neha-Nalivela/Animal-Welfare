@@ -114,6 +114,7 @@ function loadPage(pageName) {
         <h2>Adoption</h2>
         <p>Find loving pets that need a home.</p>
         <p>
+        <div id="line">
         <figure>
         <img src="cat.jpg" alt="Cat" width="200px">
         <p><caption>Cat</caption>
@@ -125,6 +126,7 @@ function loadPage(pageName) {
         <p><caption>Dog</caption>
         <button id="class" type="submit">Adopt</button></p>
         </figure>
+        </div>
         </p>
       `;
       break;
