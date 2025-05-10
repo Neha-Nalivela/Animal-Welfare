@@ -115,14 +115,14 @@ function loadPage(pageName) {
         <p>Find loving pets that need a home.</p>
         <p>
         <figure>
-        <caption>Cat</caption>
         <img src="cat.jpg" alt="Cat" width="200px">
+        <p><caption>Cat</caption></p>
         <p><button id="class">Adopt</button></p>
-        <caption>Pomeranian</caption>
         <img src="Pomeranian.webp" alt="Pomeranian.webp" width="200px">
+        <p><caption>Pomeranian</caption></p>
         <p><button id="class">Adopt</button></p>
-        <caption>Dog</caption>
         <img src="puppies.jpg" alt="Dog" width="200px">
+        <caption>Dog</caption>
         <p><button id="class">Adopt</button></p>
         </figure>
         </p>
