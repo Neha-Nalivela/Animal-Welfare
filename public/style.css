@@ -14,65 +14,79 @@ body {
   min-height: 100vh;
 }
 
+/* Top Header */
 header {
   background-color: #aab970;
-  color: white;
-  padding: 1rem;
-}
-
-header h1 {
-  text-align: center;
-  margin: 0;
-}
-
-.top-bar {
+  padding: 1rem 20px;
   display: flex;
-  /*align-items: center;*/
+  align-items: center;
   justify-content: space-between;
-  max-width: 1000px;
-  margin: 10px auto 0;
-  padding: 0 1rem;
+  border-radius: 10px 10px 0 0;
 }
 
-.menu-icon{
-  justify-items: left;
+/* Left: Menu Icon */
+.menu-icon {
   font-size: 24px;
   cursor: pointer;
+  color: white;
 }
-.profile {
-  justify-items: right;
-  font-size: 24px;
-  cursor: pointer;
+
+/* Center: Title & Search */
+.center-content {
+  flex: 1;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.center-content h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: white;
 }
 
 .search {
-  flex: 1;
-  padding: 5px;
+  padding: 8px;
   font-size: 14px;
-  max-width: 600px;
-  margin: 0 1rem;
+  width: 60%;
+  max-width: 500px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
+/* Right: Profile Icon */
+.profile {
+  font-size: 24px;
+  cursor: pointer;
+  color: #32124b;
+}
+
+/* Sidebar */
 nav#sidebar {
   background-color: #fcfafa;
   padding: 1rem;
   width: 250px;
   position: absolute;
-  top: 90px; /* just below the header */
-  left: 0px; /* near menu icon */
-  /*z-index: 1000;*/
+  top: 90px;
+  left: 0;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
 }
 
-
+/* Profile Dropdown */
 .profile-menu {
   position: absolute;
-  top: 130px;
-  right: 20px;
+  top: 90px;
+  right: 0px;
   background-color: #f4f4f4;
   padding: 1rem;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
 }
 
 nav ul,
@@ -93,18 +107,20 @@ nav ul li:hover,
   color: #5c4d7d;
 }
 
+/* Main Content */
 main#main-content {
   padding: 2rem;
   margin-left: 20px;
   color: #fcfafa;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-  font-size:x-large;
+  font-size: x-large;
 }
 
 .hidden {
   display: none;
 }
 
+/* Buttons */
 button {
   background-color: #5c4d7d;
   color: white;
@@ -117,7 +133,9 @@ button {
 button:hover {
   background-color: #483664;
 }
-.class{
+
+/* Custom class button */
+.class {
   background-color: red;
   color: white;
 }

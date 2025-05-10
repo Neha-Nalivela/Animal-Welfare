@@ -8,15 +8,22 @@
   </head>
   <body>
     <div class="app">
+      <!-- Header Bar -->
       <header>
-        <h1>ANIMAL WELFARE</h1>
-        <div class="top-bar">
-          <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <!-- Left: Menu Icon -->
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <!-- Center: Title and Search -->
+        <div class="center-content">
+          <h1>ANIMAL WELFARE</h1>
           <input type="text" placeholder="Search here" class="search" />
-          <div class="profile" onclick="toggleProfileMenu()">👤</div>
         </div>
+
+        <!-- Right: Profile Icon -->
+        <div class="profile" onclick="toggleProfileMenu()">👤</div>
       </header>
 
+      <!-- Sidebar Menu -->
       <nav id="sidebar" class="hidden">
         <ul>
           <li onclick="loadPage('organizations')">NearBy Welfare Organizations</li>
@@ -28,18 +35,21 @@
         </ul>
       </nav>
 
+      <!-- Profile Dropdown -->
       <div id="profile-menu" class="hidden profile-menu">
         <ul id="profile-menu-items">
           <!-- Filled dynamically -->
         </ul>
       </div>
 
+      <!-- Main Content -->
       <main id="main-content">
         <p>Welcome to Animal Welfare. Select a section from the menu.</p>
       </main>
     </div>
 
+    <footer id="class">&copy; All rights reserved.</footer>
+
     <script src="script.js"></script>
   </body>
-  <footer id="class">&copy; All rights reserved.</footer>
 </html>
