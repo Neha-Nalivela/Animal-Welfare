@@ -43,14 +43,16 @@ function loadPage(pageName) {
   switch (page) {
     case "login":
       mainContent.innerHTML = `
-        <h2>Login</h2>
-        <form onsubmit="handleLogin(event)">
-          <label>Email:</label><br>
-          <input type="email" required><br>
-          <label>Password:</label><br>
-          <input type="password" required><br><br>
-          <button type="submit">Login</button>
-        </form>
+        <div class="container">
+          <div class="box">
+            <h2 style="color:black">Login</h2>
+            <form onsubmit="handleLogin(event)">
+              <input type="email" required placeholder="Enter email"><br>
+              <input type="password" required placeholder="Enter password"><br><br>
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
       `;
       break;
 
@@ -113,21 +115,23 @@ function loadPage(pageName) {
       mainContent.innerHTML = `
         <h2>Adoption</h2>
         <p>Find loving pets that need a home.</p>
-        <p>
-        <div id="line">
-        <figure>
-        <img src="cat.jpg" alt="Cat" width="200px">
-        <p><caption>Cat</caption>
-        <button id="class" type="submit">Adopt</button></p>
-        <img src="Pomeranian.webp" alt="Pomeranian.webp" width="200px">
-        <p><caption>Pomeranian</caption>
-        <button id="class" type="submit">Adopt</button></p>
-        <img src="puppies.jpg" alt="Dog" width="200px">
-        <p><caption>Dog</caption>
-        <button id="class" type="submit">Adopt</button></p>
-        </figure>
+        <div class="row">
+          <p>
+          <div id="line">
+          <figure>
+          <img src="images/cat.jpg" alt="Cat" width="200px">
+          <p><caption>Cat</caption>
+          <button id="class" type="submit">Adopt</button></p>
+          <img src="images/Pomeranian.webp" alt="Pomeranian.webp" width="200px">
+          <p><caption>Pomeranian</caption>
+          <button id="class" type="submit">Adopt</button></p>
+          <img src="images/puppies.jpg" alt="Dog" width="200px">
+          <p><caption>Dog</caption>
+          <button id="class" type="submit">Adopt</button></p>
+          </figure>
+          </div>
+          </p>
         </div>
-        </p>
       `;
       break;
 
