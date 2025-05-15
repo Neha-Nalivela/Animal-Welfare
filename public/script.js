@@ -112,28 +112,29 @@ function loadPage(pageName) {
       break;
 
     case "adoption":
-      mainContent.innerHTML = `
-        <h2>Adoption</h2>
-        <p>Find loving pets that need a home.</p>
-        <div class="row">
-          <p>
-          <div id="line">
-          <figure>
-          <img src="images/cat.jpg" alt="Cat" width="200px">
-          <p><caption>Cat</caption>
-          <button id="class" type="submit">Adopt</button></p>
-          <img src="images/Pomeranian.webp" alt="Pomeranian.webp" width="200px">
-          <p><caption>Pomeranian</caption>
-          <button id="class" type="submit">Adopt</button></p>
-          <img src="images/puppies.jpg" alt="Dog" width="200px">
-          <p><caption>Dog</caption>
-          <button id="class" type="submit">Adopt</button></p>
-          </figure>
-          </div>
-          </p>
-        </div>
-      `;
-      break;
+      
+  mainContent.innerHTML = `
+    <h2>Adoption</h2>
+    <p>Find loving pets that need a home.</p>
+    <div class="adoption-row">
+      <div class="adoption-card">
+        <img src="images/cat.jpg" alt="Cat" />
+        <p>Cat</p>
+        <button>Adopt</button>
+      </div>
+      <div class="adoption-card">
+        <img src="images/Pomeranian.webp" alt="Pomeranian" />
+        <p>Pomeranian</p>
+        <button>Adopt</button>
+      </div>
+      <div class="adoption-card">
+        <img src="images/puppies.jpg" alt="Dog" />
+        <p>Dog</p>
+        <button>Adopt</button>
+      </div>
+    </div>
+  `;
+  break;
 
     case "volunteers":
       mainContent.innerHTML = `
@@ -161,11 +162,16 @@ function loadPage(pageName) {
 // Form handlers
 function handleLogin(event) {
   event.preventDefault();
-  isLoggedIn = true;
-  alert("Login successful!");
-  updateProfileMenu();
-  loadPage("home");
+  const email = event.target.querySelector('input[type="email"]').value;
+  const password = event.target.querySelector('input[type="password"]').value;
+  if (email && password) {
+    isLoggedIn = true;
+    alert("Login successful!");
+    updateProfileMenu();
+    loadPage("home");
+  }
 }
+
 
 function handleRegister(event) {
   event.preventDefault();
@@ -202,3 +208,4 @@ document.addEventListener("click", function (e) {
     menu.classList.add("hidden");
   }
 });
+
