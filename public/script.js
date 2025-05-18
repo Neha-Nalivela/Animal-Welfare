@@ -112,8 +112,7 @@ function loadPage(pageName) {
       break;
 
     case "adoption":
-      
-  mainContent.innerHTML = `
+      mainContent.innerHTML = `
     <h2>Adoption</h2>
     <p>Find loving pets that need a home.</p>
     <div class="adoption-row">
@@ -134,13 +133,31 @@ function loadPage(pageName) {
       </div>
     </div>
   `;
-  break;
+      break;
 
     case "volunteers":
       mainContent.innerHTML = `
-        <h2>Volunteers</h2>
-        <p>Join our team and help make a difference.</p>
-      `;
+    <h2>Volunteers</h2>
+    <p>Join our team and help make a difference.</p>
+    <h4>Want to join?</h4>
+    <button onclick="showVolunteerForm()">Click Here</button>
+    
+    <div id="volunteer-form-container" class="hidden" style="margin-top: 20px;">
+      <form onsubmit="handleVolunteerForm(event)" class="form">
+        <label for="volunteer-name">Name:</label><br>
+        <input type="text" id="volunteer-name" required><br>
+        
+        <label for="volunteer-email">Email:</label><br>
+        <input type="email" id="volunteer-email" required><br>
+        
+        <label for="volunteer-message">Why do you want to volunteer?</label><br>
+        <textarea id="volunteer-message" required></textarea><br><br>
+        <input type="file" placeholder="Add files if any"><br><br>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  `;
       break;
 
     case "hospitals":
@@ -172,6 +189,28 @@ function handleLogin(event) {
   }
 }
 
+function handleVolunteerForm(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("volunteer-name").value.trim();
+  const email = document.getElementById("volunteer-email").value.trim();
+  const message = document.getElementById("volunteer-message").value.trim();
+
+  if (name && email && message) {
+    alert("Thank you for volunteering! We’ll contact you soon.");
+    event.target.reset();
+    const formContainer = document.getElementById("volunteer-form-container");
+    formContainer.classList.add("hidden");
+  } 
+  else {
+    alert("Please fill in all fields.");
+  }
+}
+
+function showVolunteerForm() {
+  const formContainer = document.getElementById("volunteer-form-container");
+  formContainer.classList.remove("hidden");
+}
 
 function handleRegister(event) {
   event.preventDefault();
@@ -208,4 +247,3 @@ document.addEventListener("click", function (e) {
     menu.classList.add("hidden");
   }
 });
-

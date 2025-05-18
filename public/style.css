@@ -7,6 +7,9 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.hidden {
+  display: none;
+}
 
 .app {
   display: flex;
@@ -193,3 +196,73 @@ footer {
   border-radius: 10px;
 }
 
+/* Volunteer Form Container */
+#volunteer-form-container {
+  max-width: 450px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Form Styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Labels */
+.form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Inputs and Textarea */
+.form input[type="text"],
+.form input[type="email"],
+.form textarea,
+.form input[type="file"] {
+  padding: 8px 10px;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.form input[type="text"]:focus,
+.form input[type="email"]:focus,
+.form textarea:focus,
+.form input[type="file"]:focus {
+  border-color: #5c4d7d;
+  outline: none;
+}
+
+/* Textarea */
+.form textarea {
+  min-height: 80px;
+}
+
+/* Submit Button */
+.form button[type="submit"] {
+  background-color: #5c4d7d;
+  color: white;
+  padding: 10px 0;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form button[type="submit"]:hover {
+  background-color: #483664;
+}
