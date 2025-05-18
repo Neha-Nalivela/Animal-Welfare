@@ -41,6 +41,13 @@ function loadPage(pageName) {
   }
 
   switch (page) {
+    case "home":
+  mainContent.innerHTML = `
+    <h2>Welcome to the Animal Welfare Platform</h2>
+    <p>Use the sidebar to navigate through the sections.</p>
+  `;
+  break;
+
     case "login":
       mainContent.innerHTML = `
         <div class="container">
@@ -105,11 +112,32 @@ function loadPage(pageName) {
       break;
 
     case "organizations":
-      mainContent.innerHTML = `
-        <h2>Nearby Welfare Organizations</h2>
-        <p>List of local animal welfare organizations coming soon...</p>
-      `;
-      break;
+  mainContent.innerHTML = `
+    <h2>Nearby Welfare Organizations</h2>
+    <p>Here are some local animal welfare organizations you can connect with:</p>
+    <div class="org-list">
+      <div class="org-card">
+        <h3>Happy Paws Shelter</h3>
+        <p>1234 Paw Street, Pet City</p>
+        <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+        <p>Website: <a href="https://happypaws.org" target="_blank">happypaws.org</a></p>
+      </div>
+      <div class="org-card">
+        <h3>Furry Friends Rescue</h3>
+        <p>5678 Tail Avenue, Animal Town</p>
+        <p>Phone: <a href="tel:+1987654321">+1 987 654 321</a></p>
+        <p>Website: <a href="https://furryfriendsrescue.com" target="_blank">furryfriendsrescue.com</a></p>
+      </div>
+      <div class="org-card">
+        <h3>Safe Haven Animal Care</h3>
+        <p>9101 Whisker Blvd, Petville</p>
+        <p>Phone: <a href="tel:+1122334455">+1 122 334 455</a></p>
+        <p>Website: <a href="https://safehavenanimalcare.org" target="_blank">safehavenanimalcare.org</a></p>
+      </div>
+    </div>
+  `;
+  break;
+
 
     case "adoption":
       mainContent.innerHTML = `
@@ -139,9 +167,27 @@ function loadPage(pageName) {
       mainContent.innerHTML = `
     <h2>Volunteers</h2>
     <p>Join our team and help make a difference.</p>
+    
+    <figure>
+      <div class="adoption-row">
+      <div class="adoption-card">
+        <img src="images/Harsha.jpg" alt="Harsh" />
+        <p>Description</p>
+      </div>
+      <div class="adoption-card">
+        <img src="images/Hema.jpg" alt="Hema" />
+        <p>Description</p>
+      </div>
+      <div class="adoption-card">
+        <img src="images/Lakshmi.jpg" alt="Lakshmi" />
+        <p>Description</p>
+        </div>
+      </div>
+    </figure>
+    
     <h4>Want to join?</h4>
     <button onclick="showVolunteerForm()">Click Here</button>
-    
+
     <div id="volunteer-form-container" class="hidden" style="margin-top: 20px;">
       <form onsubmit="handleVolunteerForm(event)" class="form">
         <label for="volunteer-name">Name:</label><br>
@@ -161,11 +207,40 @@ function loadPage(pageName) {
       break;
 
     case "hospitals":
-      mainContent.innerHTML = `
-        <h2>Nearby Hospitals</h2>
-        <p>List of animal hospitals nearby.</p>
-      `;
-      break;
+  mainContent.innerHTML = `
+    <h2>Nearby Animal Hospitals</h2>
+    <input
+      id="search-input"
+      type="text"
+      placeholder="Search hospitals by name or address..."
+      oninput="handleSearch(this.value)"
+      class="search"
+      style="margin-bottom: 20px; padding: 8px; width: 100%; max-width: 400px;"
+    />
+    <div id="hospital-results" class="hospital-list">
+      <div class="hospital-card">
+        <h3>Healthy Paws Veterinary Clinic</h3>
+        <p>101 Petcare Road, Animal City</p>
+        <p>Phone: <a href="tel:+1234509876">+1 234 509 876</a></p>
+        <p>Website: <a href="https://healthypawsvet.com" target="_blank">healthypawsvet.com</a></p>
+      </div>
+      <div class="hospital-card">
+        <h3>Compassionate Animal Hospital</h3>
+        <p>202 Fur Street, Petville</p>
+        <p>Phone: <a href="tel:+1987601234">+1 987 601 234</a></p>
+        <p>Website: <a href="https://compassionateanimalhospital.org" target="_blank">compassionateanimalhospital.org</a></p>
+      </div>
+      <div class="hospital-card">
+        <h3>Paws & Claws Emergency Vet</h3>
+        <p>303 Tail Blvd, Critter Town</p>
+        <p>Phone: <a href="tel:+1123456789">+1 123 456 789</a></p>
+        <p>Website: <a href="https://pawsandclawsvet.com" target="_blank">pawsandclawsvet.com</a></p>
+      </div>
+    </div>
+  `;
+  break;
+
+
 
     default:
       mainContent.innerHTML = "<p>Page not found.</p>";
@@ -220,11 +295,13 @@ function handleRegister(event) {
 function handleDonation(event) {
   event.preventDefault();
   alert("Thank you for your generous donation!");
+  loadPage("home");
 }
 
 function handleFeedback(event) {
   event.preventDefault();
   alert("Thank you for your feedback!");
+  loadPage("home");
 }
 
 function logout() {
@@ -247,3 +324,54 @@ document.addEventListener("click", function (e) {
     menu.classList.add("hidden");
   }
 });
+
+const hospitals = [
+  {
+    name: "Healthy Paws Veterinary Clinic",
+    address: "101 Petcare Road, Animal City",
+    phone: "+1 234 509 876",
+    website: "https://healthypawsvet.com",
+  },
+  {
+    name: "Compassionate Animal Hospital",
+    address: "202 Fur Street, Petville",
+    phone: "+1 987 601 234",
+    website: "https://compassionateanimalhospital.org",
+  },
+  {
+    name: "Paws & Claws Emergency Vet",
+    address: "303 Tail Blvd, Critter Town",
+    phone: "+1 123 456 789",
+    website: "https://pawsandclawsvet.com",
+  },
+];
+
+function handleSearch(query) {
+  query = query.toLowerCase();
+  const filteredHospitals = hospitals.filter((hospital) => {
+    return (
+      hospital.name.toLowerCase().includes(query) ||
+      hospital.address.toLowerCase().includes(query)
+    );
+  });
+
+  const resultsContainer = document.getElementById("hospital-results");
+
+  if (filteredHospitals.length === 0) {
+    resultsContainer.innerHTML = "<p>No results found.</p>";
+  } else {
+    resultsContainer.innerHTML = filteredHospitals
+      .map(
+        (h) => `
+      <div class="hospital-card">
+        <h3>${h.name}</h3>
+        <p>${h.address}</p>
+        <p>Phone: <a href="tel:${h.phone}">${h.phone}</a></p>
+        <p>Website: <a href="${h.website}" target="_blank">${h.website}</a></p>
+      </div>
+    `
+      )
+      .join("");
+  }
+}
+

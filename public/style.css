@@ -266,3 +266,80 @@ footer {
 .form button[type="submit"]:hover {
   background-color: #483664;
 }
+
+.org-list {
+  gap: 40px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.org-card {
+  background-color: #e2e2d8;
+  border-radius: 12px;
+  padding: 0px;
+  text-align: center;
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.org-card:hover {
+  transform: translateY(-5px);
+}
+
+.org-card h3 {
+  margin-top: 0;
+  color: #4a4a4a;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.org-card a {
+  color: #5c4d7d;
+  text-decoration: none;
+}
+
+.org-card a:hover {
+  text-decoration: underline;
+}
+
+.hospital-list {
+  gap: 20px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.hospital-card {
+  background-color: #d7e9f7;
+  border-radius: 12px;
+  padding: 0px;
+  width: 100%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.hospital-card:hover {
+  transform: translateY(-5px);
+}
+
+.hospital-card h3 {
+  margin-top: 0;
+  color: #27496d;
+}
+
+.hospital-card a {
+  color: #2a4d69;
+  text-decoration: none;
+}
+
+.hospital-card a:hover {
+  text-decoration: underline;
+}
