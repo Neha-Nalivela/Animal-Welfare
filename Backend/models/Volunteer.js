@@ -1,11 +1,14 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const volunteerSchema = new mongoose.Schema({
+const VolunteerSchema = new mongoose.Schema({
   name: String,
   email: String,
-  contact: String,
-  address: String,
-  message: String,
+  phone: String,
+  areaOfInterest: String,
+  joinedAt: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model('Volunteer', volunteerSchema);
+module.exports = mongoose.model("Volunteer", VolunteerSchema);

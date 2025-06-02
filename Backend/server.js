@@ -1,7 +1,8 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express'
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+require("dotenv").config();
 
 const authRoutes = require('./routes/auth');
 const volunteerRoutes = require('./routes/volunteer');
@@ -9,7 +10,9 @@ const feedbackRoutes = require('./routes/feedback');
 const hospitalRoutes = require('./routes/hospital');
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: 'http://127.0.0.1:5501'
+}));
 app.use(express.json());
 
 // Routes
@@ -25,4 +28,4 @@ mongoose.connect(process.env.MONGO_URI)
       console.log(`Server running on http://localhost:${process.env.PORT}`);
     });
   })
-  .catch(err => console.error('MongoDB connection error:', err));
+  .catch((err) => console.error("MongoDB connection error:", err));

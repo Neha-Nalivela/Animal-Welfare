@@ -254,15 +254,34 @@ function loadPage(pageName) {
 // Form handlers
 function handleLogin(event) {
   event.preventDefault();
-  const email = event.target.querySelector('input[type="email"]').value;
-  const password = event.target.querySelector('input[type="password"]').value;
-  if (email && password) {
+
+  const form = event.target;
+  const email = form.querySelector('input[type="email"]').value.trim();
+  const password = form.querySelector('input[type="password"]').value;
+
+  fetch('http://localhost:5000/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  })
+  .then(res => {
+    if (!res.ok) {
+      return res.json().then(data => { throw new Error(data.message || 'Login failed'); });
+    }
+    return res.json();
+  })
+  .then(data => {
+    // Store token if you want to use it later
+    localStorage.setItem('token', data.token);
+
     isLoggedIn = true;
-    alert("Login successful!");
+    alert('Login successful!');
     updateProfileMenu();
-    loadPage("home");
-  }
+    loadPage('home');
+  })
+  .catch(err => alert('Error: ' + err.message));
 }
+
 
 function handleVolunteerForm(event) {
   event.preventDefault();
@@ -289,8 +308,30 @@ function showVolunteerForm() {
 
 function handleRegister(event) {
   event.preventDefault();
-  alert("Registration successful!");
+
+  const form = event.target;
+  const name = form.querySelector('input[type="text"]').value.trim();
+  const email = form.querySelector('input[type="email"]').value.trim();
+  const password = form.querySelector('input[type="password"]').value;
+
+  fetch('http://localhost:5000/api/auth/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, password })
+  })
+  .then(res => {
+    if (!res.ok) {
+      return res.json().then(data => { throw new Error(data.message || 'Registration failed'); });
+    }
+    return res.json();
+  })
+  .then(data => {
+    alert('Registration successful! You can now login.');
+    loadPage('login');
+  })
+  .catch(err => alert('Error: ' + err.message));
 }
+
 
 function handleDonation(event) {
   event.preventDefault();

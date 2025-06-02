@@ -1,9 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const hospitalSchema = new mongoose.Schema({
+const HospitalSchema = new mongoose.Schema({
   name: String,
-  location: String,
-  contact: String,
+  address: String,
+  phone: String,
+  website: String,
 });
 
-module.exports = mongoose.model('Hospital', hospitalSchema);
+module.exports = mongoose.model("Hospital", HospitalSchema);
