@@ -389,53 +389,64 @@ document.addEventListener("click", function (e) {
   }
 });
 
-const hospitals = [
-  {
-    name: "Healthy Paws Veterinary Clinic",
-    address: "101 Petcare Road, Animal City",
-    phone: "+1 234 509 876",
-    website: "https://healthypawsvet.com",
-  },
-  {
-    name: "Compassionate Animal Hospital",
-    address: "202 Fur Street, Petville",
-    phone: "+1 987 601 234",
-    website: "https://compassionateanimalhospital.org",
-  },
-  {
-    name: "Paws & Claws Emergency Vet",
-    address: "303 Tail Blvd, Critter Town",
-    phone: "+1 123 456 789",
-    website: "https://pawsandclawsvet.com",
-  },
-];
+let hospitals = [];
 
-function handleSearch(query) {
-  query = query.toLowerCase();
-  const filteredHospitals = hospitals.filter((hospital) => {
-    return (
-      hospital.name.toLowerCase().includes(query) ||
-      hospital.address.toLowerCase().includes(query)
-    );
-  });
+async function loadHospitals() {
+  try {
+    const response = await fetch("http://localhost:5000/api/hospitals");
+    hospitals = await response.json();
+    renderHospitals(hospitals);
+  } catch (err) {
+    console.error("Error loading hospitals:", err);
+    document.getElementById("hospital-results").innerHTML = "<p>Failed to load hospitals.</p>";
+  }
+}
 
+function renderHospitals(hospitalsToRender) {
   const resultsContainer = document.getElementById("hospital-results");
 
-  if (filteredHospitals.length === 0) {
+  if (hospitalsToRender.length === 0) {
     resultsContainer.innerHTML = "<p>No results found.</p>";
   } else {
-    resultsContainer.innerHTML = filteredHospitals
+    resultsContainer.innerHTML = hospitalsToRender
       .map(
         (h) => `
-      <div class="hospital-card">
-        <h3>${h.name}</h3>
-        <p>${h.address}</p>
-        <p>Phone: <a href="tel:${h.phone}">${h.phone}</a></p>
-        <p>Website: <a href="${h.website}" target="_blank">${h.website}</a></p>
-      </div>
-    `
+        <div class="hospital-card">
+          <h3>${h.name}</h3>
+          <p>${h.address}</p>
+          <p>Phone: <a href="tel:${h.phone}">${h.phone}</a></p>
+          <p>Website: <a href="${h.website}" target="_blank">${h.website}</a></p>
+        </div>
+      `
       )
       .join("");
   }
 }
 
+function handleSearch(query) {
+  query = query.toLowerCase();
+  const filtered = hospitals.filter(
+    (h) =>
+      h.name.toLowerCase().includes(query) ||
+      h.address.toLowerCase().includes(query)
+  );
+  renderHospitals(filtered);
+}
+
+// Call loadHospitals when the hospital page is loaded/shown:
+function showHospitalsPage() {
+  mainContent.innerHTML = `
+    <h2>Nearby Animal Hospitals</h2>
+    <input
+      id="search-input"
+      type="text"
+      placeholder="Search hospitals by name or address..."
+      oninput="handleSearch(this.value)"
+      class="search"
+      style="margin-bottom: 20px; padding: 8px; width: 100%; max-width: 400px;"
+    />
+    <div id="hospital-results" class="hospital-list">Loading hospitals...</div>
+  `;
+
+  loadHospitals();
+}
