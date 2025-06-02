@@ -1,13 +1,14 @@
-import express from 'express'
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-require("dotenv").config();
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
 
 const authRoutes = require('./routes/auth');
 const volunteerRoutes = require('./routes/volunteer');
 const feedbackRoutes = require('./routes/feedback');
 const hospitalRoutes = require('./routes/hospital');
+
+dotenv.config();
 
 const app = express();
 app.use(cors({
