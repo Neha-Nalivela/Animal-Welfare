@@ -1,10 +1,9 @@
 const mongoose = require("mongoose");
 
 const VolunteerSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  phone: String,
-  areaOfInterest: String,
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+  message: { type: String, required: true },  // Changed from areaOfInterest/phone to message
   joinedAt: {
     type: Date,
     default: Date.now,

@@ -291,12 +291,35 @@ function handleVolunteerForm(event) {
   const message = document.getElementById("volunteer-message").value.trim();
 
   if (name && email && message) {
-    alert("Thank you for volunteering! We’ll contact you soon.");
-    event.target.reset();
-    const formContainer = document.getElementById("volunteer-form-container");
-    formContainer.classList.add("hidden");
-  } 
-  else {
+    const volunteerData = {
+      name,
+      email,
+      message, // if your backend schema expects message, else you can remove this
+    };
+
+    fetch("http://localhost:5000/api/volunteer", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(volunteerData),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.message) {
+          alert("Thank you for volunteering! We’ll contact you soon.");
+          event.target.reset();
+          const formContainer = document.getElementById("volunteer-form-container");
+          formContainer.classList.add("hidden");
+        } else {
+          alert("Something went wrong. Please try again.");
+        }
+      })
+      .catch((error) => {
+        console.error("Error submitting volunteer form:", error);
+        alert("Error submitting volunteer form. Please try again.");
+      });
+  } else {
     alert("Please fill in all fields.");
   }
 }
